@@ -24,24 +24,31 @@ docker images | grep peter279k/php7.4-dev
 ```
 
 ## Step 4
-Using following command to enter to this Docker image
+Clone the PHP source code reposirory via `git` command then running `cd php-src`.
 
 ```BASH
-docker run -it peter279k/php7.4-dev:0.1 "bash"
+git clone https://github.com/php/php-src.git && cd php-src
 ```
 
-## Step 4
-Once entering the interactive shell, using `cd /root/PHP-7.4` to change current directory to the PHP source code repositoy folder
-
 ## Step 5
-Running following shell script to compile the PHP source code to be a PHP binary for Travis CI build
+Running Docker command to enter into this image via intercative shell
+
+```BASH
+docker run -it -v $(pwd):/root/PHP-7.4 peter279k/php7.4-dev:CURRENT_TAG_NAME
+```
+
+## Step 6
+Using `cd /root/PHP-7.4` to change current directory to the PHP source code repositoy folder
+
+## Step 7
+Running following shell script to compile a PHP binary for Travis CI build
 
 ```BASH
 ./travis/compile.sh
 ```
 
-## Step 6
-Once compiling PHP binaraies is done, you can use following comand to check this.
+## Step 8
+Once compiling PHP source code is done, you can use following comand to check this.
 
 ```BASH
 sapi/cli/php -v
