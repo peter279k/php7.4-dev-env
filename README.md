@@ -31,7 +31,7 @@ git clone https://github.com/php/php-src.git && cd php-src
 ```
 
 ## Step 5
-Running Docker command to enter into this image via intercative shell
+Running Docker command to mount php-src directory and enter into this image via intercative shell
 
 ```BASH
 docker run -it -v $(pwd):/root/PHP-7.4 peter279k/php7.4-dev:CURRENT_TAG_NAME
@@ -44,7 +44,7 @@ Using `cd /root/PHP-7.4` to change current directory to the PHP source code repo
 Running following shell script to compile a PHP binary for Travis CI build
 
 ```BASH
-./travis/compile.sh
+git checkout PHP-7.4 && ./travis/compile.sh
 ```
 
 ## Step 8
